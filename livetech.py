@@ -1,4 +1,4 @@
-from FoxDot import * 
+from FoxDot import *
 
 k1 >> play("X-", amp=4)
 
@@ -15,8 +15,7 @@ Clock.stop()
 
 Clock.bpm = 134
 
-b1 >> bass(P[0, 0, PRand([0]*10+[2,-1,0,1])], dur=Fraction(1,4), sus=0.2, lpf=2000, lpr=0.2, amp=[0,1,1,0, 0.5,1,0,1, 0,1,1,0, 0.5,1,1,0])
-
+b1 >> evilbass(P[0, 0, PRand([0]*10+[2,-1,0,1])], dur=Fraction(1,4), sus=0.5, lpf=2000, lpr=0.2, amp=[0,1,1,0, 0.5,1,0,1, 0,1,1,0, 0.5,1,1,0])
 n1 >> sitar(PRand([b1.degree]*8+[b1.degree + 1, b1.degree + 2, b1.degree + 3]), oct=6, dur=0.5, sus=0.6, amp=0.4, hpf=linvar([100, 1000], 32), chop=3)
 
 n1.stop()
@@ -35,7 +34,7 @@ k1.amplify=1
 print(SynthDefs)
 
 
-a1 >> varsaw((0, 0.01, 3), dur=32, sus=32, oct=(3,4), amp=0.8)
+a1 >> varsaw((0, 0.01, 3) + b1.degree, dur=32, sus=32, oct=(3,4), amp=0.8)
 
 d1 >> play("X  [--]", sample=3)
 

@@ -4,8 +4,8 @@ k1 >> play()
 k1.degree = "V="
 
 d1 >> play()
-d1.degree = "[--]"
-d1.dur=0.5
+d1.degree = "-"
+d1.dur=Fraction(1,3)
 d1.sample=3
 
 d2 >> play()
