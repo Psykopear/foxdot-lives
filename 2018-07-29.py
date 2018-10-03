@@ -8,11 +8,12 @@ Root.default=var(P[0], 1)
 m = Master()
 m.hpf=0
 
-s1 >> klank((b1.degree,b1.degree+P[5,3,1,1]), dur=2, hpf=sinvar([1000,4000],16), formant=sinvar([0,1],16), shape=(sinvar([0,1],16))).stop()
-d1 >> play("-", sample=PRand(list(range(5))), dur=0.25, pan=PWhite(-0.8,0.8), amp=PEuclid(13,16)*PWhite(0.8,1.2))
-k1 >> play("Xh", sample=2, hpf=0, hpr=0.2, amp=1)
-d2 >> play("(h{--[--]}) (h )O(= -)", amp=0.7, mix=0.3, room=0.3)
-b1 >> evilbass(var([0,0,1,0],8), dur=PRand([0.25,0.5]), amp=1.3, sus=0.4)
+s1 >> klank((b1.degree,b1.degree+P[5,3,1,1]), dur=4, hpr=0.3, hpf=sinvar([1000,4000],1), formant=sinvar([1,0],16), shape=(sinvar([0,1],16)), amp=0.1)
+d1 >> play("-", sample=PRand(list(range(5))), dur=0.25, pan=PWhite(-0.8,0.8), amp=PEuclid(13,16)*PWhite(0.8,1.2)).spread()
+d2 >> play("(h{--[--]}) (h )O(= -)", amp=0.7, mix=0.3, room=0.3).sometimes('stutter', 4, dur=3).sometimes('amen').stop()
+k1 >> play("X ", sample=2, hpf=0, hpr=0.2, amp=2.4).sometimes('stutter', 4, dur=3).sometimes('amen').sometimes('splice', 1/2)
+k1.amplify=var([1,0],[28,4])
+b1 >> evilbass(var([0,1,0,-1],8), dur=PDur(9,16)*PRand([1]), amp=1.0, sus=0.5, formant=(0,4)).sometimes('amen')
 b1.stop()
 
 
