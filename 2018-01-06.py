@@ -1,21 +1,31 @@
 from FoxDot import *
 
+Clock.clear()
+
 Scale.default=Scale.locrian
 
 Root.default=-5
 
 s1 >> razz(P[[0]*8+[2,2,2,2,1,1,1,1]], dur=1, chop=4, formant=(0,PWhite(0.4,0.9)))
+
 b1 >> bass(s1.degree, oct=5, dur=0.5, sus=0.4, amp=P[0,1]*0.8)
+
 k1 >> play("<X ><  o >", sample=2, shape=(0,0.2), mix=0.2, room=0.2)
+
+
 d1 >> play("-", delay=PRand([0.01, -0.01, 0.02, -0.02, 0.005,0,0,0]), dur=0.25, amp=PRand([0,1,1]), sample=PRand(list(range(6))), pan=(PWhite(0,1), PWhite(-1,0)))
 
 
-Master().bpm=134
+Master().bpm=120
 
 Group(d1,s1).solo()
-Group(b1,k1,s1).hpf=5000
+
+Group(b1,k1,s1).hpf=0
+
 Group(b1,k1,s1).stop()#hpf=5000
+
 Group(b1,k1).hpr=0.200
+
 
 Scale.default=Scale.phrygian
 

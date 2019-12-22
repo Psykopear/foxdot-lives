@@ -2,13 +2,15 @@
 
 setup_jack () {
     # Get list of available devices
-    internal=`jack_control dpd device | grep "ALC3266 Analog (duplex)" | cut -d\' -f 2`
-    roland=`jack_control dpd device | grep "UA-22" | cut -d\' -f 2`
+    # internal=`jack_control dpd device | grep "ALC3266 Analog (duplex)" | cut -d\' -f 2`
+    roland=`cat /proc/asound/cards | grep "UA22"`
     # If roland is not here
     if [ -z "$roland" ]; then
-        jack_control dps device $internal
+        echo "Setting internal soundcard"
+        jack_control dps device hw:PCH,0
     else
-        jack_control dps device $roland
+        echo "Setting Roland soundcard"
+        jack_control dps device  hw:UA22,0
     fi
 }
 

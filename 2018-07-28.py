@@ -1,4 +1,5 @@
 FoxDot.start
+
 from FoxDot import *
 Clock.clear()
 Scale.default=Scale.phrygian
@@ -6,7 +7,9 @@ Root.default=var(P[0], 1)
 m = Master()
 
 s1 >> klank((0,var([3,2,1,7],16)), dur=0.25, formant=sinvar([0,1],16), shape=sinvar([0.5,0],16), chop=PRand([1,2]), amp=0.8)
+
 s2 >> pluck(s1.degree[1] + P[-1,-2,-3,1,0,0,0,0,0,0].shuffle(), dur=0.25, amp=PEuclid(P[7,8,9,10],16))
+
 b1 >> bass(s2.degree, sus=0.25, dur=0.25, amp=PEuclid(P[7,8,9,10],16)*1.0, shape=(0,0.1), hpf=0, lpf=0)#expvar(100,1000,1/4), lpr=0.3)
 d2 >> play(" (h )o ", room=0.4, mix=(0,0.4))
 k1 >> play("X ", sample=2, shape=(0,0.1), formant=(0,0.1), hpf=(0,0), hpr=0.3, echo=(0,0.1)).every(8, 'stutter', PRand([1,2,2])),

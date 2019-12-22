@@ -1,16 +1,23 @@
 FoxDot.start
+
 from FoxDot import *
+
 Clock.clear()
+
 Scale.default=Scale.phrygian
 Root.default=var(P[0], 1)
 m = Master()
 
 
-s1 >> klank(var([0,-1,2,1],8), chop=0, dur=0.25, sus=0.2, formant=(0,sinvar([0,1],16)))
+s1 >> klank(var([0,-1,2,1],8), chop=1, dur=0.25, sus=0.2, formant=(0,sinvar([0,1],16)))
+
 d1 >> play("-", dur=0.25, sample=PRand(list(range(3))), pan=PWhite(-1,1), amp=P[1.0,0.8,0.9,0.8])
+
 d2 >> play("h o ", room=0.6, mix=(0,1)).sometimes("amen")
+
 b1 >> sawbass(s1.degree, dur=PDur(P[3,5,4],8), sus=0.2, lpf=PWhite(300,1900), lpr=0.2, hpf=0)
-k1 >> play("X ", sample=2, mix=(0,0.8), room=0.3).sometimes('stutter', 4, dur=3)
+
+k1 >> play("X ", sample=2, mix=(0,0.8), room=0.3, amp=0.4).sometimes('stutter', 4, dur=3)
 
 Group(k1, b1).solo()
 

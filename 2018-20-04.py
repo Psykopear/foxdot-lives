@@ -7,6 +7,8 @@ tempo >> play(amp=0)
 tempo.dur=Fraction(1,3)
 t = { 'dur': tempo.dur }
 
+Clock.clear()
+
 t
 s1 >> sitar()
 
@@ -44,6 +46,10 @@ Group(k2,s3).solo()
 
 t1 >> ambi(0, dur=Fraction(1,2), amp=0)
 metro = { 'dur': t1.dur, 'degree': t1.degree }
+
+
+s1.reset() >> bug(3, oct=3)
+
 
 b1.reset() >> varsaw(**metro)
 c2 >> sitar(**metro)

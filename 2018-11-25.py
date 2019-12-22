@@ -1,7 +1,10 @@
 FoxDot.start
 from FoxDot import *
+
 Clock.clear()
+
 Scale.default=Scale.lydian
+
 Scale.default=Scale.phrygian
 Scale.default=Scale.aeolian
 Scale.default=Scale.mixolydian
@@ -18,11 +21,11 @@ Root.default=var(P[0], 1)
 Clock.bpm=100
 Clock.clear()
 s1.reset() >> star(var([5,6,7,6],[7.5,0.5]), oct=(5), formant=0.5, dur=P[7.5,0.5], amp=0.1, room=0.7, mix=0.5).spread()
-s2.reset() >> pluck(P[6,7,9,7], oct=(5,3),dur=0.25, room=0.8, mix=0.6, shape=(0,sinvar([0.2,0.4],16)), hpf=sinvar([0,3000],16), hpr=0.2, amp=0.2).spread().stop()
-b1.reset() >> sawbass(var([3,4,5,4],[7.5,0.5]), dur=P[3/4,3/4,2/4], sus=0.4, lpf=2900, lpr=0.2, amp=0.8, shape=(0,0.1), room=0, mix=0).stop()
+s2.reset() >> pluck(P[6,7,9,7], oct=(5,3),dur=0.25, room=0.8, mix=0.6, shape=(0,sinvar([0.2,0.4],16)), hpf=sinvar([0,3000],16), hpr=0.2, amp=0.2).spread()
+b1.reset() >> sawbass(var([3,4,5,4],[7.5,0.5]), dur=P[3/4,3/4,2/4], sus=0.4, lpf=2900, lpr=0.2, amp=0.8, shape=(0,0.1), room=0, mix=0)
+s3.reset() >> ambi(4, oct=6, mix=0.9, sus=0.7, room=0.9, dur=2, echo=0, amp=1).spread()
+s4.reset() >> ambi(2, oct=6, sus=0.7, mix=0.9, room=0.9, dur=P[0.5,1.5], echo=0, amp=1)
 
-s3.reset() >> ambi(4, oct=6, mix=0.9, sus=0.7, room=0.9, dur=2, echo=0, amp=1).spread().stop()
-s4.reset() >> ambi(2, oct=6, sus=0.7, mix=0.9, room=0.9, dur=P[0.5,1.5], echo=0, amp=1).stop()
 Group(s3,s4).amplify=sinvar([0.8,1.2],16)
 
 

@@ -1,4 +1,5 @@
 Clock.clear()
+
 from FoxDot import *
 Scale.default=Scale.locrian
 Root.default=var(P[0], 1)
@@ -18,7 +19,7 @@ s2 >> sitar(
     # 0,
     root=0,
     dur=1/4,
-    amp=PEuclid(P[9,7,11,13].shuffle().mirror(),16)*0.9,
+    amp=PEuclid(P[9,7,5,3].shuffle().mirror(),11)*0.9,
     sus=0.3,
     oct=(4, 5),
     hpr=0.4,
@@ -29,11 +30,12 @@ s2 >> sitar(
 
 
 b1 >> evilbass(
-    0,
-    # degree=P[0,0,4,0,1,2,-3].shuffle().mirror(),
+    # 0,
+    degree=P[0,0,4,0,1,2,-3].shuffle().palindrome(),
     sus=0.5,
     dur=1/4,
-    amp=PEuclid(11,16).shuffle()*3,
+    amp=PEuclid(5,11).shuffle()*0.5,
+    oct=4,
     root=0,
 )
 
